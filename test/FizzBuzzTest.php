@@ -20,4 +20,10 @@ class FizzBuzzTest extends PHPUnit_Framework_TestCase
 	public function test3の倍数を渡すとFizzと返すこと() {
 		$this->assertEquals(FizzBuzz::run(3), 'Fizz');
 	}
+	/**
+	 * @test
+	 */
+	public function testその他を渡すとその値を返すこと() {
+		$this->assertEquals(FizzBuzz::run(1), '1');
+	}
 }
