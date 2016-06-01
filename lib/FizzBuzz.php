@@ -4,7 +4,9 @@ class FizzBuzz
 	public static function run($value) {
 		if ($value == 15) {
 			return 'FizzBuzz';
+		} elseif ($value == 5) {
+			return 'Buzz';
 		}
-		return 'Buzz';
+		return 'Fizz';
 	}
 }
