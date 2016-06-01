@@ -30,4 +30,12 @@ class FizzBuzzTest extends PHPUnit_Framework_TestCase
 		$this->assertEquals(FizzBuzz::run(1), '1', 'fail at 1');
 		$this->assertEquals(FizzBuzz::run(7), '7', 'fail at 7');
 	}
+	/**
+	 * @test
+	 */
+	public function test0のとき() {
+		$this->assertEquals(FizzBuzz::run(0), '0');
+	}
+
+
 }
