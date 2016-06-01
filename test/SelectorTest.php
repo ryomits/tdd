@@ -14,5 +14,15 @@ class SelectorTest extends PHPUnit_Framework_TestCase
 		$selector->select(1);
 		$this->assertEquals($spy->result(), 'Fizz');
 	}
+
+	/**
+	 * @test
+	 */
+	public function testメニューにない値が渡るとなにもしないこと() {
+		$spy = new StdOutSpy();
+		$selector = new Selector(null, $spy);
+		$selector->select(100);
+		$this->assertNull($spy->result());
+	}
 }
 
