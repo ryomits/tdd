@@ -2,7 +2,7 @@
 class FizzBuzz
 {
 	public static function run($value) {
-		if ($value == 15) {
+		if ($value % 15 == 0) {
 			return 'FizzBuzz';
 		} elseif ($value == 5) {
 			return 'Buzz';
