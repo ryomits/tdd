@@ -2,9 +2,10 @@
 class StdOutSpy
 {
 	public function result() {
-		return 'Fizz';
+		return $this->result;
 	}
 
-	public function out() {
+	public function out($result) {
+		$this->result = $result;
 	}
 }
