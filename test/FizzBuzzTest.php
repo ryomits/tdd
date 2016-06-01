@@ -27,6 +27,7 @@ class FizzBuzzTest extends PHPUnit_Framework_TestCase
 	 * @test
 	 */
 	public function testその他を渡すとその値を返すこと() {
-		$this->assertEquals(FizzBuzz::run(1), '1');
+		$this->assertEquals(FizzBuzz::run(1), '1', 'fail at 1');
+		$this->assertEquals(FizzBuzz::run(7), '7', 'fail at 7');
 	}
 }
