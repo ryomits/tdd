@@ -6,7 +6,7 @@ class FizzBuzz
 			return 'FizzBuzz';
 		} elseif ($value % 5 == 0) {
 			return 'Buzz';
-		} elseif ($value == 3) {
+		} elseif ($value % 3 == 0) {
 			return 'Fizz';
 		}
 		return 1;
