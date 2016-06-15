@@ -11,7 +11,7 @@ class SelectorTest extends PHPUnit_Framework_TestCase
 	public function test1が渡るとFizzBuzzを実行すること() {
 		$stub = new StdInStub('3');
 		$spy = new StdOutSpy();
-		$selector = new Selector($stub, $spy);
+		$selector = new Selector($stub, $spy, null);
 		$selector->select('1');
 		$this->assertEquals($spy->result(), ['Fizz']);
 	}
@@ -21,7 +21,7 @@ class SelectorTest extends PHPUnit_Framework_TestCase
 	 */
 	public function testメニューにない値が渡るとなにもしないこと() {
 		$spy = new StdOutSpy();
-		$selector = new Selector(null, $spy);
+		$selector = new Selector(null, $spy, null);
 		$illegalValue = '100';
 		$selector->select($illegalValue);
 		$this->assertEquals($spy->result(), []);

@@ -2,9 +2,10 @@
 require('FizzBuzz.php');
 class Selector
 {
-	public function __construct($stdIn, $stdOut) {
+	public function __construct($stdIn, $stdOut, $logger) {
 		$this->stdIn = $stdIn;
 		$this->stdOut = $stdOut;
+		$this->logger = $logger;
 	}
 
 	public function select($value) {
@@ -13,8 +14,9 @@ class Selector
 			$this->stdOut->out(FizzBuzz::run((int)$this->stdIn->in()));
 			break;
 		case 2:
-			$this->stdOut->out("3: Fizz");
-			$this->stdOut->out("5: Buzz");
+			foreach($this->logger->results() as $result) {
+				$this->stdOut->out($result);
+			}
 			break;
 		}
 	}
