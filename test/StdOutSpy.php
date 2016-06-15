@@ -2,7 +2,7 @@
 class StdOutSpy
 {
 	public function __construct() {
-		$this->result = null;
+		$this->result = [];
 	}
 
 	public function result() {
@@ -10,6 +10,6 @@ class StdOutSpy
 	}
 
 	public function out($result) {
-		$this->result = $result;
+		$this->result[] = $result;
 	}
 }
