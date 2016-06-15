@@ -19,10 +19,10 @@ class FizzBuzz
 	}
 
 	private static function isMultipleOfAll($value) {
-		return $value == 0;
+		return $value === 0;
 	}
 
 	private static function isMultipleOf($multiple, $value) {
-		return $value % $multiple == 0;
+		return $value % $multiple === 0;
 	}
 }

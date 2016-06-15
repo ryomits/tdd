@@ -10,7 +10,7 @@ class Selector
 	public function select($value) {
 		switch ($value) {
 		case 1:
-			$this->stdOut->out(FizzBuzz::run($this->stdIn->in()));
+			$this->stdOut->out(FizzBuzz::run((int)$this->stdIn->in()));
 		}
 	}
 }
