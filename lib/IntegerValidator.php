@@ -8,10 +8,10 @@ class IntegerValidator
 
 	public function isValid()
 	{
-		if ($this->value == 'aaa') {
-			return false;
-		} else {
+		if (preg_match('/^\d+$/', $this->value)) {
 			return true;
 		}
+
+		return false;
 	}
 }

@@ -10,6 +10,16 @@ class IntegerValidatorTest extends PHPUnit_Framework_TestCase
 		$this->assertTrue($validator->isValid());
 	}
 
+	/**
+	 * @test
+	 */
+	public function testアルファベットが渡るとfalseが返ること() {
+		$validator = new IntegerValidator("a");
+		$this->assertFalse($validator->isValid());
+	}
+
+
+
 	// 数値
 	// アルファベット
 	// 制御コード
