@@ -27,18 +27,18 @@ class SelectorTest extends PHPUnit_Framework_TestCase
 		$this->assertEquals($spy->result(), []);
 	}
 
-#	/**
-#	 * @test
-#	 */
-#	public function test2が渡ると履歴が表示されること() {
-#		$spy = new StdOutSpy();
-#		$logger = new Logger();
-#		$logger->add('3: Fizz');
-#		$logger->add('5: Buzz');
-#		$selector = new Selector(null, $spy, $logger);
-#
-#		$selector->select('2');
-#		$this->assertEquals($spy->result(), ["3: Fizz", "5: Buzz"]);
-#	}
+	/**
+	 * @test
+	 */
+	public function test2が渡ると履歴が表示されること() {
+		$spy = new StdOutSpy();
+		$logger = new Logger();
+		$logger->add('3: Fizz');
+		$logger->add('5: Buzz');
+		$selector = new Selector(null, $spy, $logger);
+
+		$selector->select('2');
+		$this->assertEquals($spy->result(), ["3: Fizz", "5: Buzz"]);
+	}
 }
 

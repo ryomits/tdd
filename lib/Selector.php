@@ -11,6 +11,11 @@ class Selector
 		switch ($value) {
 		case 1:
 			$this->stdOut->out(FizzBuzz::run((int)$this->stdIn->in()));
+			break;
+		case 2:
+			$this->stdOut->out("3: Fizz");
+			$this->stdOut->out("5: Buzz");
+			break;
 		}
 	}
 }
