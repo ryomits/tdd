@@ -56,5 +56,17 @@ class SelectorTest extends PHPUnit_Framework_TestCase
 		$selector->select('2');
 		$this->assertEquals($spy->result(), ["3: Fizz", "5: Buzz"]);
 	}
+
+	/**
+	 * @test
+	 */
+	public function testFizzBuzzに数値意外が入力されたらFizzBuzzが実行されないこと() {
+		$stub = new StdInStub('aaa');
+		$spy = new StdOutSpy();
+		$logger = new Logger();
+		$selector = new Selector($stub, $spy, $logger);
+		$selector->select('1');
+		$this->assertEquals($spy->result(), []);
+	}
 }
 
