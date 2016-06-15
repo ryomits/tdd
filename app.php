@@ -1,5 +1,6 @@
 <?php
 require('lib/Selector.php');
+require('lib/Logger.php');
 
 class StdIn
 {
@@ -17,12 +18,12 @@ class StdOut
 	}
 }
 
+$selector = new Selector(new StdIn, new StdOut, new Logger);
 while (true) {
 	$value = trim(fgets(STDIN));
 	if ($value === '0') {
 		break;
 	}
 
-	(new Selector(new StdIn, new StdOut))->select($value);
+	$selector->select($value);
 }
-
