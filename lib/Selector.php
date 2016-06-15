@@ -11,7 +11,10 @@ class Selector
 	public function select($value) {
 		switch ($value) {
 		case 1:
-			$this->stdOut->out(FizzBuzz::run((int)$this->stdIn->in()));
+			$input = (int)$this->stdIn->in();
+			$result = FizzBuzz::run($input);
+			$this->logger->add("$input: $result");
+			$this->stdOut->out($result);
 			break;
 		case 2:
 			foreach($this->logger->results() as $result) {

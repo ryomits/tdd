@@ -11,10 +11,26 @@ class SelectorTest extends PHPUnit_Framework_TestCase
 	public function test1が渡るとFizzBuzzを実行すること() {
 		$stub = new StdInStub('3');
 		$spy = new StdOutSpy();
-		$selector = new Selector($stub, $spy, null);
+		$logger = new Logger();
+		$selector = new Selector($stub, $spy, $logger);
 		$selector->select('1');
 		$this->assertEquals($spy->result(), ['Fizz']);
 	}
+
+	/**
+	 * @test
+	 */
+	public function testFizzBuzzのログが残ること() {
+		$stub = new StdInStub('3');
+		$spy = new StdOutSpy();
+		$logger = new Logger();
+		$selector = new Selector($stub, $spy, $logger);
+		$selector->select('1');
+		$this->assertEquals($logger->results(), ['3: Fizz']);
+	}
+
+
+
 
 	/**
 	 * @test
