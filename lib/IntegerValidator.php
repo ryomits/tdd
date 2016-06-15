@@ -5,6 +5,7 @@ class IntegerValidator
 	{
 		$this->value = $value;
 	}
+
 	public function isValid()
 	{
 		if ($this->value == 'aaa') {
