@@ -18,6 +18,21 @@ class IntegerValidatorTest extends PHPUnit_Framework_TestCase
 		$this->assertFalse($validator->isValid());
 	}
 
+	/**
+	 * @test
+	 */
+	public function test数値と文字列が混ざったものが渡るとfalseが返ること() {
+		$validator = new IntegerValidator("1a");
+		$this->assertFalse($validator->isValid());
+	}
+
+	/**
+	 * @test
+	 */
+	public function test連続する数値が渡るとtrueが返ること() {
+		$validator = new IntegerValidator("123");
+		$this->assertTrue($validator->isValid());
+	}
 
 
 	// 数値
