@@ -21,7 +21,8 @@ class SelectorTest extends PHPUnit_Framework_TestCase
 	public function testメニューにない値が渡るとなにもしないこと() {
 		$spy = new StdOutSpy();
 		$selector = new Selector(null, $spy);
-		$selector->select('100');
+		$illegalValue = '100';
+		$selector->select($illegalValue);
 		$this->assertNull($spy->result());
 	}
 }
