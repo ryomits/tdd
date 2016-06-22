@@ -1,5 +1,5 @@
 <?php
-require('IntegerValidator.php');
+require_once('IntegerValidator.php');
 class IntegerValidatorTest extends PHPUnit_Framework_TestCase
 {
 	/**

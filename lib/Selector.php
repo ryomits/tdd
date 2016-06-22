@@ -1,5 +1,6 @@
 <?php
-require('FizzBuzzExec.php');
+require_once('FizzBuzzExec.php');
+require_once('FizzBuzzLogShow.php');
 class Selector
 {
 	public function __construct($stdIn, $stdOut, $logger) {
@@ -14,9 +15,7 @@ class Selector
 			(new FizzBuzzExec($this->stdIn, $this->stdOut, $this->logger))->run();
 			break;
 		case 2:
-			foreach($this->logger->results() as $result) {
-				$this->stdOut->out($result);
-			}
+			(new FizzBuzzLogShow($this->stdOut, $this->logger))->run();
 			break;
 		}
 	}

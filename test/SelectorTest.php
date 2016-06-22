@@ -1,8 +1,8 @@
 <?php
-require('Selector.php');
-require('StdInStub.php');
-require('StdOutSpy.php');
-require('Logger.php');
+require_once('Selector.php');
+require_once('StdInStub.php');
+require_once('StdOutSpy.php');
+require_once('Logger.php');
 class SelectorTest extends PHPUnit_Framework_TestCase
 {
 	/**

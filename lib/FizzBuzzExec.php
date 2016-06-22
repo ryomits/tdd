@@ -1,6 +1,6 @@
 <?php
-require('IntegerValidator.php');
-require('FizzBuzz.php');
+require_once('IntegerValidator.php');
+require_once('FizzBuzz.php');
 class FizzBuzzExec
 {
 	public function __construct($stdIn, $stdOut, $logger) {
