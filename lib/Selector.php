@@ -1,7 +1,6 @@
 <?php
 require_once('FizzBuzzExec.php');
 require_once('FizzBuzzLogShow.php');
-require_once('FizzBuzzLoggingExec.php');
 class Selector
 {
 	public function __construct($stdIn, $stdOut, $logger, $file) {
