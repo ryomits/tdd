@@ -2,6 +2,7 @@
 require_once('Selector.php');
 require_once('StdInStub.php');
 require_once('StdOutSpy.php');
+require_once('FileSpy.php');
 require_once('Logger.php');
 class SelectorTest extends PHPUnit_Framework_TestCase
 {
@@ -12,7 +13,7 @@ class SelectorTest extends PHPUnit_Framework_TestCase
 		$stub = new StdInStub('3');
 		$spy = new StdOutSpy();
 		$logger = new Logger();
-		$selector = new Selector($stub, $spy, $logger);
+		$selector = new Selector($stub, $spy, $logger, null);
 		$selector->select('1');
 		$this->assertEquals($spy->result(), ['Fizz']);
 	}
@@ -24,7 +25,7 @@ class SelectorTest extends PHPUnit_Framework_TestCase
 		$stub = new StdInStub('3');
 		$spy = new StdOutSpy();
 		$logger = new Logger();
-		$selector = new Selector($stub, $spy, $logger);
+		$selector = new Selector($stub, $spy, $logger, null);
 		$selector->select('1');
 		$this->assertEquals($logger->results(), ['3: Fizz']);
 	}
@@ -37,7 +38,7 @@ class SelectorTest extends PHPUnit_Framework_TestCase
 	 */
 	public function testメニューにない値が渡るとなにもしないこと() {
 		$spy = new StdOutSpy();
-		$selector = new Selector(null, $spy, null);
+		$selector = new Selector(null, $spy, null, null);
 		$illegalValue = '100';
 		$selector->select($illegalValue);
 		$this->assertEquals($spy->result(), []);
@@ -51,7 +52,7 @@ class SelectorTest extends PHPUnit_Framework_TestCase
 		$logger = new Logger();
 		$logger->add('3: Fizz');
 		$logger->add('5: Buzz');
-		$selector = new Selector(null, $spy, $logger);
+		$selector = new Selector(null, $spy, $logger, null);
 
 		$selector->select('2');
 		$this->assertEquals($spy->result(), ["3: Fizz", "5: Buzz"]);
@@ -64,9 +65,35 @@ class SelectorTest extends PHPUnit_Framework_TestCase
 		$stub = new StdInStub('aaa');
 		$spy = new StdOutSpy();
 		$logger = new Logger();
-		$selector = new Selector($stub, $spy, $logger);
+		$selector = new Selector($stub, $spy, $logger, null);
 		$selector->select('1');
 		$this->assertEquals($spy->result(), []);
 	}
-}
 
+	/**
+	 * @test
+	 */
+	public function test3が渡ると履歴が保存されること() {
+		$spy = new FileSpy();
+		$logger = new Logger();
+		$logger->add('3: Fizz');
+		$logger->add('5: Buzz');
+		$selector = new Selector(null, null, $logger, $spy);
+
+		$selector->select('3');
+		$this->assertEquals($spy->results(), ["3: Fizz", "5: Buzz"]);
+	}
+
+	/**
+	 * @test
+	 */
+	public function mode4が渡ると履歴が表示されること() {
+		$stdOutSpy = new StdOutSpy();
+		$fileSpy = new FileSpy();
+		$fileSpy->set(["3: Fizz", "5: Buzz"]);
+		$selector = new Selector(null, $stdOutSpy, null, $fileSpy);
+
+		$selector->select('4');
+		$this->assertEquals($stdOutSpy->result(), ["3: Fizz", "5: Buzz"]);
+	}
+}
