@@ -1,6 +1,5 @@
 <?php
-require('FizzBuzz.php');
-require('IntegerValidator.php');
+require('FizzBuzzExec.php');
 class Selector
 {
 	public function __construct($stdIn, $stdOut, $logger) {
@@ -12,13 +11,7 @@ class Selector
 	public function select($value) {
 		switch ($value) {
 		case 1:
-			$input = $this->stdIn->in();
-			if (!(new IntegerValidator($input))->isValid()) {
-				break;
-			}
-			$result = FizzBuzz::run($input);
-			$this->logger->add("$input: $result");
-			$this->stdOut->out($result);
+			(new FizzBuzzExec($this->stdIn, $this->stdOut, $this->logger))->run();
 			break;
 		case 2:
 			foreach($this->logger->results() as $result) {
