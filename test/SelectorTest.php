@@ -18,17 +18,10 @@ class SelectorTest extends PHPUnit_Framework_TestCase
 	/**
 	 * @test
 	 */
-	public function testFizzBuzzのログが残ること() {
-		$stub = new StdInStub('3');
-		$spy = new StdOutSpy();
-		$logger = new Logger();
-		$selector = new Selector($stub, $spy, $logger, null);
-		$selector->select('1')->run();
-		$this->assertEquals($logger->results(), ['3: Fizz']);
+	public function test2が渡るとFizzBuzzLogShowインスタンスを返すこと() {
+		$selector = new Selector(null, null, null, null);
+		$this->assertTrue($selector->select('2') instanceof FizzBuzzLogShow);
 	}
-
-
-
 
 	/**
 	 * @test
@@ -38,32 +31,6 @@ class SelectorTest extends PHPUnit_Framework_TestCase
 		$selector = new Selector(null, $spy, null, null);
 		$illegalValue = '100';
 		$selector->select($illegalValue)->run();
-		$this->assertEquals($spy->result(), []);
-	}
-
-	/**
-	 * @test
-	 */
-	public function test2が渡ると履歴が表示されること() {
-		$spy = new StdOutSpy();
-		$logger = new Logger();
-		$logger->add('3: Fizz');
-		$logger->add('5: Buzz');
-		$selector = new Selector(null, $spy, $logger, null);
-
-		$selector->select('2')->run();
-		$this->assertEquals($spy->result(), ["3: Fizz", "5: Buzz"]);
-	}
-
-	/**
-	 * @test
-	 */
-	public function testFizzBuzzに数値意外が入力されたらFizzBuzzが実行されないこと() {
-		$stub = new StdInStub('aaa');
-		$spy = new StdOutSpy();
-		$logger = new Logger();
-		$selector = new Selector($stub, $spy, $logger, null);
-		$selector->select('1')->run();
 		$this->assertEquals($spy->result(), []);
 	}
 
