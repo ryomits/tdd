@@ -1,6 +1,7 @@
 <?php
 require('lib/Selector.php');
 require('lib/Logger.php');
+require('lib/FileOut.php');
 
 class StdIn
 {
@@ -18,7 +19,7 @@ class StdOut
 	}
 }
 
-$selector = new Selector(new StdIn, new StdOut, new Logger);
+$selector = new Selector(new StdIn, new StdOut, new Logger, new FileOut('./production.txt'));
 while (true) {
 	$value = trim(fgets(STDIN));
 	if ($value === '0') {
