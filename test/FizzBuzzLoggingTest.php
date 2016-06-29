@@ -2,6 +2,7 @@
 require_once('FizzBuzzLogging.php');
 require_once('StdOutSpy.php');
 require_once('Logger.php');
+require_once('FileSpy.php');
 class FizzBuzzLoggingTest extends PHPUnit_Framework_TestCase
 {
 	/**

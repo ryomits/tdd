@@ -1,10 +1,5 @@
 <?php
 require_once('Selector.php');
-require_once('StdInStub.php');
-require_once('StdOutSpy.php');
-require_once('FileSpy.php');
-require_once('Logger.php');
-require_once('FizzBuzzExec.php');
 class SelectorTest extends PHPUnit_Framework_TestCase
 {
 	/**
@@ -34,24 +29,17 @@ class SelectorTest extends PHPUnit_Framework_TestCase
 	/**
 	 * @test
 	 */
-	public function testメニューにない値が渡るとなにもしないこと() {
-		$spy = new StdOutSpy();
-		$selector = new Selector(null, $spy, null, null);
-		$illegalValue = '100';
-		$selector->select($illegalValue)->run();
-		$this->assertEquals($spy->result(), []);
+	public function test4が渡るとFizzBuzzPermanentLogShowインスタンスを返すこと() {
+		$selector = new Selector(null, null, null, null);
+		$this->assertTrue($selector->select('4') instanceof FizzBuzzPermanentLogShow);
 	}
 
 	/**
 	 * @test
 	 */
-	public function mode4が渡ると履歴が表示されること() {
-		$stdOutSpy = new StdOutSpy();
-		$fileSpy = new FileSpy();
-		$fileSpy->set(["3: Fizz", "5: Buzz"]);
-		$selector = new Selector(null, $stdOutSpy, null, $fileSpy);
-
-		$selector->select('4')->run();
-		$this->assertEquals($stdOutSpy->result(), ["3: Fizz", "5: Buzz"]);
+	public function testメニューにない値が渡るとFizzBuzzNotDoingインスタンスを返すこと() {
+		$selector = new Selector(null, null, null, null);
+		$illegalValue = '100';
+		$this->assertTrue($selector->select($illegalValue) instanceof FizzBuzzNotDoing);
 	}
 }
