@@ -4,18 +4,15 @@ require_once('StdInStub.php');
 require_once('StdOutSpy.php');
 require_once('FileSpy.php');
 require_once('Logger.php');
+require_once('FizzBuzzExec.php');
 class SelectorTest extends PHPUnit_Framework_TestCase
 {
 	/**
 	 * @test
 	 */
 	public function test1が渡るとFizzBuzzを実行すること() {
-		$stub = new StdInStub('3');
-		$spy = new StdOutSpy();
-		$logger = new Logger();
-		$selector = new Selector($stub, $spy, $logger, null);
-		$selector->select('1')->run();
-		$this->assertEquals($spy->result(), ['Fizz']);
+		$selector = new Selector(null, null, null, null);
+		$this->assertTrue($selector->select('1') instanceof FizzBuzzExec);
 	}
 
 	/**
