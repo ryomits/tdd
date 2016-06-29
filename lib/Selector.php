@@ -14,21 +14,16 @@ class Selector
 	}
 
 	public function select($value) {
-		$this->select_command($value);
-	}
-
-	private function select_command($value)
-	{
 		if ($value === '1') {
-			return (new FizzBuzzExec($this->stdIn, $this->stdOut, $this->logger))->run();
+			return (new FizzBuzzExec($this->stdIn, $this->stdOut, $this->logger));
 		} elseif ($value === '2') {
-			return (new FizzBuzzLogShow($this->stdOut, $this->logger))->run();
+			return (new FizzBuzzLogShow($this->stdOut, $this->logger));
 		} elseif ($value === '3') {
-			return (new FizzBuzzLogging($this->file, $this->logger))->run();
+			return (new FizzBuzzLogging($this->file, $this->logger));
 		} elseif ($value === '4') {
-			return (new FizzBuzzPermanentLogShow($this->file, $this->stdOut))->run();
+			return (new FizzBuzzPermanentLogShow($this->file, $this->stdOut));
 		} else {
-			return (new FizzBuzzNotDoing)->run();
+			return new FizzBuzzNotDoing;
 		}
 	}
 }

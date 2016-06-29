@@ -26,5 +26,5 @@ while (true) {
 		break;
 	}
 
-	$selector->select($value);
+	$selector->select($value)->run();
 }

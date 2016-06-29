@@ -14,7 +14,7 @@ class SelectorTest extends PHPUnit_Framework_TestCase
 		$spy = new StdOutSpy();
 		$logger = new Logger();
 		$selector = new Selector($stub, $spy, $logger, null);
-		$selector->select('1');
+		$selector->select('1')->run();
 		$this->assertEquals($spy->result(), ['Fizz']);
 	}
 
@@ -26,7 +26,7 @@ class SelectorTest extends PHPUnit_Framework_TestCase
 		$spy = new StdOutSpy();
 		$logger = new Logger();
 		$selector = new Selector($stub, $spy, $logger, null);
-		$selector->select('1');
+		$selector->select('1')->run();
 		$this->assertEquals($logger->results(), ['3: Fizz']);
 	}
 
@@ -40,7 +40,7 @@ class SelectorTest extends PHPUnit_Framework_TestCase
 		$spy = new StdOutSpy();
 		$selector = new Selector(null, $spy, null, null);
 		$illegalValue = '100';
-		$selector->select($illegalValue);
+		$selector->select($illegalValue)->run();
 		$this->assertEquals($spy->result(), []);
 	}
 
@@ -54,7 +54,7 @@ class SelectorTest extends PHPUnit_Framework_TestCase
 		$logger->add('5: Buzz');
 		$selector = new Selector(null, $spy, $logger, null);
 
-		$selector->select('2');
+		$selector->select('2')->run();
 		$this->assertEquals($spy->result(), ["3: Fizz", "5: Buzz"]);
 	}
 
@@ -66,7 +66,7 @@ class SelectorTest extends PHPUnit_Framework_TestCase
 		$spy = new StdOutSpy();
 		$logger = new Logger();
 		$selector = new Selector($stub, $spy, $logger, null);
-		$selector->select('1');
+		$selector->select('1')->run();
 		$this->assertEquals($spy->result(), []);
 	}
 
@@ -80,7 +80,7 @@ class SelectorTest extends PHPUnit_Framework_TestCase
 		$logger->add('5: Buzz');
 		$selector = new Selector(null, null, $logger, $spy);
 
-		$selector->select('3');
+		$selector->select('3')->run();
 		$this->assertEquals($spy->results(), ["3: Fizz", "5: Buzz"]);
 	}
 
@@ -93,7 +93,7 @@ class SelectorTest extends PHPUnit_Framework_TestCase
 		$fileSpy->set(["3: Fizz", "5: Buzz"]);
 		$selector = new Selector(null, $stdOutSpy, null, $fileSpy);
 
-		$selector->select('4');
+		$selector->select('4')->run();
 		$this->assertEquals($stdOutSpy->result(), ["3: Fizz", "5: Buzz"]);
 	}
 }
