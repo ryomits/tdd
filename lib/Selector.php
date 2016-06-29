@@ -1,6 +1,7 @@
 <?php
 require_once('FizzBuzzExec.php');
 require_once('FizzBuzzLogShow.php');
+require_once('FizzBuzzLogging.php');
 class Selector
 {
 	public function __construct($stdIn, $stdOut, $logger, $file) {
@@ -16,7 +17,7 @@ class Selector
 		} elseif ($value === '2') {
 			(new FizzBuzzLogShow($this->stdOut, $this->logger))->run();
 		} elseif ($value === '3') {
-			$this->file->set($this->logger->results());
+			(new FizzBuzzLogging($this->file, $this->logger))->run();
 		} elseif ($value === '4') {
 			$file = $this->file->get();
 			foreach ($file as $row) {
