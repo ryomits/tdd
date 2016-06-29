@@ -2,6 +2,7 @@
 require_once('FizzBuzzExec.php');
 require_once('FizzBuzzLogShow.php');
 require_once('FizzBuzzLogging.php');
+require_once('FizzBuzzPermanentLogShow.php');
 class Selector
 {
 	public function __construct($stdIn, $stdOut, $logger, $file) {
@@ -19,10 +20,7 @@ class Selector
 		} elseif ($value === '3') {
 			(new FizzBuzzLogging($this->file, $this->logger))->run();
 		} elseif ($value === '4') {
-			$file = $this->file->get();
-			foreach ($file as $row) {
-				$this->stdOut->out($row);
-			}
+			(new FizzBuzzPermanentLogShow($this->file, $this->stdOut))->run();
 		}
 	}
 }
