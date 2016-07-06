@@ -1,15 +1,15 @@
 <?php
 
-class Logger
+class FizzBuzzRepository
 {
 	private $results = [];
 
-	public function add($result)
+	public function register($result)
 	{
 		$this->results[] = $result;
 	}
 
-	public function results()
+	public function all()
 	{
 		return $this->results;
 	}

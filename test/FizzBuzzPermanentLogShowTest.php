@@ -1,7 +1,7 @@
 <?php
 require_once('FizzBuzzPermanentLogShow.php');
 require_once('StdOutSpy.php');
-require_once('Logger.php');
+require_once('FizzBuzzRepository.php');
 class FizzBuzzPermanentLogShowTest extends PHPUnit_Framework_TestCase
 {
 	/**

@@ -2,14 +2,14 @@
 
 class FIzzBuzzLogging
 {
-	public function __construct($file, $logger)
+	public function __construct($file, $repository)
 	{
 		$this->file = $file;
-		$this->logger = $logger;
+		$this->repository = $repository;
 	}
 
 	public function run()
 	{
-		$this->file->set($this->logger->results());
+		$this->file->set($this->repository->all());
 	}
 }

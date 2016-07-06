@@ -14,31 +14,32 @@ class FizzBuzz
 
 	public function execute()
 	{
+		// executeの戻り値をキャッシュしたものを返却
 		if (isset($this->result)) {
 			return $this->result;
 		}
 
-		if (!$this->isMultipleOfAll($this->value)) {
-			if ($this->isMultipleOf(15, $this->value)) {
+		if (!$this->isMultipleOfAll()) {
+			if ($this->isMultipleOf(15)) {
 				return $this->result = 'FizzBuzz';
 			}
 
-			if ($this->isMultipleOf(5, $this->value)) {
+			if ($this->isMultipleOf(5)) {
 				return $this->result = 'Buzz';
 			}
 
-			if ($this->isMultipleOf(3, $this->value)) {
+			if ($this->isMultipleOf(3)) {
 				return $this->result = 'Fizz';
 			}
 		}
 		return $this->result = $this->value;
 	}
 
-	private function isMultipleOfAll($value) {
-		return $value === 0;
+	private function isMultipleOfAll() {
+		return $this->value === 0;
 	}
 
-	private function isMultipleOf($multiple, $value) {
-		return $value % $multiple === 0;
+	private function isMultipleOf($multiple) {
+		return $this->value % $multiple === 0;
 	}
 }

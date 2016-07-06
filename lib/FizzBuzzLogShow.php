@@ -2,15 +2,15 @@
 
 class FizzBuzzLogShow
 {
-	public function __construct($stdOut, $logger)
+	public function __construct($stdOut, $repository)
 	{
 		$this->stdOut = $stdOut;
-		$this->logger = $logger;
+		$this->repository = $repository;
 	}
 
 	public function run()
 	{
-		foreach($this->logger->results() as $result) {
+		foreach($this->repository->all() as $result) {
 			$this->stdOut->out($result);
 		}
 	}

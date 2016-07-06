@@ -2,7 +2,7 @@
 
 require_once('FizzBuzzLogShow.php');
 require_once('StdOutSpy.php');
-require_once('Logger.php');
+require_once('FizzBuzzRepository.php');
 class FizzBuzzLogShowTest extends PHPUnit_Framework_TestCase
 {
 	/**
@@ -10,13 +10,13 @@ class FizzBuzzLogShowTest extends PHPUnit_Framework_TestCase
 	 */
 	public function test履歴を表示すること() {
 		$spy = new StdOutSpy();
-		$logger = new Logger();
+		$repository = new FizzBuzzRepository();
 		$fizz = new FizzBuzz(3);
 		$buzz = new FizzBuzz(5);
-		$logger->add($fizz->toString());
-		$logger->add($buzz->toString());
+		$repository->register($fizz->toString());
+		$repository->register($buzz->toString());
 
-		(new FizzBuzzLogShow($spy, $logger))->run();
+		(new FizzBuzzLogShow($spy, $repository))->run();
 		$this->assertEquals($spy->result(), [$fizz->toString(), $buzz->toString()]);
 	}
 }

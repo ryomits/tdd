@@ -2,15 +2,15 @@
 require_once('FizzBuzzExec.php');
 require_once('StdInStub.php');
 require_once('StdOutSpy.php');
-require_once('Logger.php');
+require_once('FizzBuzzRepository.php');
 class FizzBuzzExecTest extends PHPUnit_Framework_TestCase
 {
 	protected function setUp()
 	{
 		$this->stub = new StdInStub();
 		$this->spy = new StdOutSpy();
-		$this->logger = new Logger();
-		$this->command = new FizzBuzzExec($this->stub, $this->spy, $this->logger);
+		$this->repository = new FizzBuzzRepository();
+		$this->command = new FizzBuzzExec($this->stub, $this->spy, $this->repository);
 	}
 
 	/**
@@ -29,7 +29,7 @@ class FizzBuzzExecTest extends PHPUnit_Framework_TestCase
 	public function testFizzBuzzのログが残ること() {
 		$this->stub->set_input('3');
 		$this->command->run();
-		$this->assertEquals($this->logger->results(), [(new FizzBuzz(3))->toString()]);
+		$this->assertEquals($this->repository->all(), [(new FizzBuzz(3))->toString()]);
 	}
 
 	/**

@@ -7,20 +7,20 @@ require_once('FizzBuzzNotDoing.php');
 require_once('FizzBuzzView.php');
 class Selector
 {
-	public function __construct($stdIn, $stdOut, $logger, $file) {
+	public function __construct($stdIn, $stdOut, $repository, $file) {
 		$this->stdIn = $stdIn;
 		$this->stdOut = $stdOut;
-		$this->logger = $logger;
+		$this->repository = $repository;
 		$this->file = $file;
 	}
 
 	public function select($value) {
 		if ($value === '1') {
-			return (new FizzBuzzExec($this->stdIn, new FizzBuzzView, $this->logger));
+			return (new FizzBuzzExec($this->stdIn, new FizzBuzzView, $this->repository));
 		} elseif ($value === '2') {
-			return (new FizzBuzzLogShow($this->stdOut, $this->logger));
+			return (new FizzBuzzLogShow($this->stdOut, $this->repository));
 		} elseif ($value === '3') {
-			return (new FizzBuzzLogging($this->file, $this->logger));
+			return (new FizzBuzzLogging($this->file, $this->repository));
 		} elseif ($value === '4') {
 			return (new FizzBuzzPermanentLogShow($this->file, $this->stdOut));
 		} else {

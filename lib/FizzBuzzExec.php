@@ -3,10 +3,10 @@ require_once('IntegerValidator.php');
 require_once('FizzBuzz.php');
 class FizzBuzzExec
 {
-	public function __construct($stdIn, $stdOut, $logger) {
+	public function __construct($stdIn, $stdOut, $repository) {
 		$this->stdIn = $stdIn;
 		$this->stdOut = $stdOut;
-		$this->logger = $logger;
+		$this->repository = $repository;
 	}
 
 	public function run() {
@@ -15,7 +15,7 @@ class FizzBuzzExec
 			return;
 		}
 		$fizz_buzz = new FizzBuzz($input);
-		$this->logger->add($fizz_buzz->toString());
+		$this->repository->register($fizz_buzz->toString());
 		$this->stdOut->out($fizz_buzz->execute());
 	}
 }
