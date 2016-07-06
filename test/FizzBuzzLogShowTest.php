@@ -11,10 +11,12 @@ class FizzBuzzLogShowTest extends PHPUnit_Framework_TestCase
 	public function test履歴を表示すること() {
 		$spy = new StdOutSpy();
 		$logger = new Logger();
-		$logger->add('3: Fizz');
-		$logger->add('5: Buzz');
+		$fizz = new FizzBuzz(3);
+		$buzz = new FizzBuzz(5);
+		$logger->add($fizz->toString());
+		$logger->add($buzz->toString());
 
 		(new FizzBuzzLogShow($spy, $logger))->run();
-		$this->assertEquals($spy->result(), ["3: Fizz", "5: Buzz"]);
+		$this->assertEquals($spy->result(), [$fizz->toString(), $buzz->toString()]);
 	}
 }

@@ -1,14 +1,6 @@
 <?php
 class FizzBuzz
 {
-	private function isMultipleOfAll($value) {
-		return $value === 0;
-	}
-
-	private function isMultipleOf($multiple, $value) {
-		return $value % $multiple === 0;
-	}
-
 	public function __construct($value)
 	{
 		$this->value = $value;
@@ -22,19 +14,31 @@ class FizzBuzz
 
 	public function execute()
 	{
+		if (isset($this->result)) {
+			return $this->result;
+		}
+
 		if (!$this->isMultipleOfAll($this->value)) {
 			if ($this->isMultipleOf(15, $this->value)) {
-				return 'FizzBuzz';
+				return $this->result = 'FizzBuzz';
 			}
 
 			if ($this->isMultipleOf(5, $this->value)) {
-				return 'Buzz';
+				return $this->result = 'Buzz';
 			}
 
 			if ($this->isMultipleOf(3, $this->value)) {
-				return 'Fizz';
+				return $this->result = 'Fizz';
 			}
 		}
-		return $this->value;
+		return $this->result = $this->value;
+	}
+
+	private function isMultipleOfAll($value) {
+		return $value === 0;
+	}
+
+	private function isMultipleOf($multiple, $value) {
+		return $value % $multiple === 0;
 	}
 }

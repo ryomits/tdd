@@ -29,7 +29,7 @@ class FizzBuzzExecTest extends PHPUnit_Framework_TestCase
 	public function testFizzBuzzのログが残ること() {
 		$this->stub->set_input('3');
 		$this->command->run();
-		$this->assertEquals($this->logger->results(), ['3: Fizz']);
+		$this->assertEquals($this->logger->results(), [(new FizzBuzz(3))->toString()]);
 	}
 
 	/**

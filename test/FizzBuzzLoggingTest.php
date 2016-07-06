@@ -11,9 +11,12 @@ class FizzBuzzLoggingTest extends PHPUnit_Framework_TestCase
 	public function test履歴を保存すること() {
 		$spy = new FileSpy();
 		$logger = new Logger();
-		$logger->add('3: Fizz');
-		$logger->add('5: Buzz');
+		$fizz = new FizzBuzz(3);
+		$buzz = new FizzBuzz(5);
+		$logger->add($fizz->toString());
+		$logger->add($buzz->toString());
+
 		(new FizzBuzzLogging($spy, $logger))->run();
-		$this->assertEquals($spy->results(), ["3: Fizz", "5: Buzz"]);
+		$this->assertEquals($spy->results(), [$fizz->toString(), $buzz->toString()]);
 	}
 }
