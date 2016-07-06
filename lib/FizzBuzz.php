@@ -1,28 +1,40 @@
 <?php
 class FizzBuzz
 {
-	public static function run($value) {
-		if (!static::isMultipleOfAll($value)) {
-			if (static::isMultipleOf(15, $value)) {
-				return 'FizzBuzz';
-			}
-
-			if (static::isMultipleOf(5, $value)) {
-				return 'Buzz';
-			}
-
-			if (static::isMultipleOf(3, $value)) {
-				return 'Fizz';
-			}
-		}
-		return $value;
-	}
-
-	private static function isMultipleOfAll($value) {
+	private function isMultipleOfAll($value) {
 		return $value === 0;
 	}
 
-	private static function isMultipleOf($multiple, $value) {
+	private function isMultipleOf($multiple, $value) {
 		return $value % $multiple === 0;
+	}
+
+	public function __construct($value)
+	{
+		$this->value = $value;
+	}
+
+	public function toString()
+	{
+		$result = $this->execute();
+		return "$this->value: $result";
+	}
+
+	public function execute()
+	{
+		if (!$this->isMultipleOfAll($this->value)) {
+			if ($this->isMultipleOf(15, $this->value)) {
+				return 'FizzBuzz';
+			}
+
+			if ($this->isMultipleOf(5, $this->value)) {
+				return 'Buzz';
+			}
+
+			if ($this->isMultipleOf(3, $this->value)) {
+				return 'Fizz';
+			}
+		}
+		return $this->value;
 	}
 }

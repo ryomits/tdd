@@ -14,8 +14,8 @@ class FizzBuzzExec
 		if (!(new IntegerValidator($input))->isValid()) {
 			return;
 		}
-		$result = FizzBuzz::run($input);
-		$this->logger->add("$input: $result");
-		$this->stdOut->out($result);
+		$fizz_buzz = new FizzBuzz($input);
+		$this->logger->add($fizz_buzz->toString());
+		$this->stdOut->out($fizz_buzz->execute());
 	}
 }
