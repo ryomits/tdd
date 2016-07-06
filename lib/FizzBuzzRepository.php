@@ -26,7 +26,7 @@ class FizzBuzzRepository
 		}
 		return array_map(function($number) {
 			return new FizzBuzz((int)$number);
-		} ,explode("\n", file_get_contents($this->filepath)));
+		}, explode("\n", file_get_contents($this->filepath)));
 	}
 
 	public function save()
