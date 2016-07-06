@@ -9,7 +9,7 @@ class FizzBuzzExecTest extends PHPUnit_Framework_TestCase
 	{
 		$this->stub = new StdInStub();
 		$this->spy = new StdOutSpy();
-		$this->repository = new FizzBuzzRepository();
+		$this->repository = new FizzBuzzRepository('');
 		$this->command = new FizzBuzzExec($this->stub, $this->spy, $this->repository);
 	}
 
@@ -29,7 +29,7 @@ class FizzBuzzExecTest extends PHPUnit_Framework_TestCase
 	public function testFizzBuzzのログが残ること() {
 		$this->stub->set_input('3');
 		$this->command->run();
-		$this->assertEquals($this->repository->all(), [(new FizzBuzz(3))->toString()]);
+		$this->assertEquals($this->repository->all()[0]->toString(), (new FizzBuzz(3))->toString());
 	}
 
 	/**

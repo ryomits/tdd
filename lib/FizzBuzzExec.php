@@ -15,7 +15,7 @@ class FizzBuzzExec
 			return;
 		}
 		$fizz_buzz = new FizzBuzz($input);
-		$this->repository->register($fizz_buzz->toString());
+		$this->repository->register($fizz_buzz);
 		$this->stdOut->out($fizz_buzz->execute());
 	}
 }

@@ -2,17 +2,16 @@
 
 class FizzBuzzPermanentLogShow
 {
-	public function __construct($file, $stdOut)
+	public function __construct($repository, $stdOut)
 	{
-		$this->file = $file;
+		$this->repository = $repository;
 		$this->stdOut = $stdOut;
 	}
 
 	public function run()
 	{
-		$file = $this->file->get();
-		foreach ($file as $row) {
-			$this->stdOut->out($row);
+		foreach ($this->repository->past_all() as $fizz_buzz) {
+			$this->stdOut->out($fizz_buzz->toString());
 		}
 	}
 }

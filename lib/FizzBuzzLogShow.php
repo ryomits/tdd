@@ -10,8 +10,8 @@ class FizzBuzzLogShow
 
 	public function run()
 	{
-		foreach($this->repository->all() as $result) {
-			$this->stdOut->out($result);
+		foreach($this->repository->all() as $fizz_buzz) {
+			$this->stdOut->out($fizz_buzz->toString());
 		}
 	}
 }

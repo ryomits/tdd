@@ -2,14 +2,13 @@
 
 class FIzzBuzzLogging
 {
-	public function __construct($file, $repository)
+	public function __construct($repository)
 	{
-		$this->file = $file;
 		$this->repository = $repository;
 	}
 
 	public function run()
 	{
-		$this->file->set($this->repository->all());
+		$this->repository->save();
 	}
 }

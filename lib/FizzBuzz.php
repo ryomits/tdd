@@ -35,6 +35,11 @@ class FizzBuzz
 		return $this->result = $this->value;
 	}
 
+	public function getNumber()
+	{
+		return $this->value;
+	}
+
 	private function isMultipleOfAll() {
 		return $this->value === 0;
 	}
